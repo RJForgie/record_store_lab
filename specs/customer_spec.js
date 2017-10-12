@@ -46,4 +46,14 @@ describe("Customer", function () {
     assert.strictEqual(customer2.collection.length, 0)
     assert.strictEqual(customer2.cash, 50)
   })
+
+  it("should be able to sell records", function () {
+    customer2.buyRecord(record2)
+
+    var result = customer2.sellRecord("In Rainbows")
+
+    assert.strictEqual(result, record2)
+    assert.strictEqual(customer2.collection.length, 0)
+    assert.strictEqual(customer2.cash, 50)
+  })
 })
