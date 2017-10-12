@@ -41,9 +41,20 @@ describe("Record Store", function () {
   it("should be able to list inventory", function () {
     recordStore.addRecord(record1)
     recordStore.addRecord(record2)
-    
+
     var expected = "Artist: Jimi Hendrix, Title: Axis Bold As Love, Genre: Classic, Price: 100\nArtist: Radiohead, Title: In Rainbows, Genre: Indie, Price: 10"
     assert.strictEqual(recordStore.listInventory(), expected)
+  })
+
+  it("should be able to sell record", function () {
+    recordStore.addRecord(record1)
+    recordStore.addRecord(record2)
+
+    result = recordStore.sellRecord("In Rainbows")
+
+    assert.strictEqual(result, record2)
+    assert.strictEqual(recordStore.inventory.length, 1)
+    assert.strictEqual(recordStore.balance, 10)
   })
 
 })
