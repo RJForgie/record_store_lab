@@ -33,6 +33,12 @@ RecordStore.prototype = {
       return total + record.price
     }, 0)
     return "Balance: " + this.balance + ", Inventory value: " + inventoryValue
+  },
+
+  findByGenre: function (genreToFind) {
+    return this.inventory.filter(function (record) {
+      return record.genre === genreToFind
+    })
   }
 }
 

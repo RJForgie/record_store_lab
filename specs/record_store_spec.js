@@ -6,11 +6,13 @@ describe("Record Store", function () {
   var recordStore
   var record1
   var record2
+  var record3
 
   beforeEach(function () {
     recordStore = new RecordStore("bind(records)", "Edinburgh")
     record1 = new Record("Jimi Hendrix", "Axis Bold As Love", "Classic", 100)
     record2 = new Record("Radiohead", "In Rainbows", "Indie", 10)
+    record3 = new Record("Led Zeppelin", "IV", "Classic", 150)
   })
 
   it("should have a name", function () {
@@ -50,7 +52,7 @@ describe("Record Store", function () {
     recordStore.addRecord(record1)
     recordStore.addRecord(record2)
 
-    result = recordStore.sellRecord("In Rainbows")
+    var result = recordStore.sellRecord("In Rainbows")
 
     assert.strictEqual(result, record2)
     assert.strictEqual(recordStore.inventory.length, 1)
@@ -61,7 +63,7 @@ describe("Record Store", function () {
     recordStore.addRecord(record1)
     recordStore.addRecord(record2)
 
-    result = recordStore.sellRecord("Any Beegees album")
+    var result = recordStore.sellRecord("Any Beegees album")
 
     assert.strictEqual(result, null)
     assert.strictEqual(recordStore.inventory.length, 2)
@@ -71,11 +73,21 @@ describe("Record Store", function () {
   it("should be able to print financial report", function () {
     recordStore.addRecord(record1)
     recordStore.addRecord(record2)
-    result = recordStore.sellRecord("In Rainbows")
+    var result = recordStore.sellRecord("In Rainbows")
 
-    expected = "Balance: 10, Inventory value: 100"
+    var expected = "Balance: 10, Inventory value: 100"
 
     assert.strictEqual(recordStore.financialReport(), expected)
+  })
+
+  it("should be able to return all records of a genre", function () {
+    recordStore.addRecord(record1)
+    recordStore.addRecord(record2)
+    recordStore.addRecord(record3)
+
+    var expected = [record1, record3]
+
+    assert.deepStrictEqual(recordStore.findByGenre("Classic"), expected)
   })
 
 })
