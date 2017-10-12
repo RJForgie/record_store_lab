@@ -12,15 +12,15 @@ describe("Record", function () {
     assert.strictEqual(record.artist, "Jimi Hendrix")
   })
 
-  it("should have an title", function () {
+  it("should have a title", function () {
     assert.strictEqual(record.title, "Axis Bold As Love")
   })
 
-  it("should have an genre", function () {
+  it("should have a genre", function () {
     assert.strictEqual(record.genre, "Classic")
   })
 
-  it("should have an price", function () {
+  it("should have a price", function () {
     assert.strictEqual(record.price, 100)
   })
 })
