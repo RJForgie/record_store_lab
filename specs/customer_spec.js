@@ -56,4 +56,11 @@ describe("Customer", function () {
     assert.strictEqual(customer2.collection.length, 0)
     assert.strictEqual(customer2.cash, 50)
   })
+
+  it("should be able to calculate collection value", function () {
+    customer1.buyRecord(record1)
+    customer1.buyRecord(record2)
+
+    assert.strictEqual(customer1.collectionValue(), 110)
+  })
 })

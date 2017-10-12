@@ -21,6 +21,12 @@ Customer.prototype = {
     var foundRecord = this.collection.splice(foundIndex, 1)[0]
     this.cash += foundRecord.price
     return foundRecord
+  },
+
+  collectionValue: function () {
+    return this.collection.reduce(function (total, record) {
+      return total + record.price
+    }, 0)
   }
 }
 
