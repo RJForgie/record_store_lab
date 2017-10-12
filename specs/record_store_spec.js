@@ -73,7 +73,7 @@ describe("Record Store", function () {
   it("should be able to print financial report", function () {
     recordStore.addRecord(record1)
     recordStore.addRecord(record2)
-    var result = recordStore.sellRecord("In Rainbows")
+    recordStore.sellRecord("In Rainbows")
 
     var expected = "Balance: 10, Inventory value: 100"
 
