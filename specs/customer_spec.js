@@ -31,4 +31,19 @@ describe("Customer", function () {
   it("should have an empty collection at start", function () {
     assert.strictEqual(customer1.collection.length, 0)
   })
+
+  it("should be able to buy record", function () {
+    customer1.buyRecord(record1)
+
+    assert.strictEqual(customer1.collection.length, 1)
+    assert.ok(customer1.collection.includes(record1))
+    assert.strictEqual(customer1.cash, 200)
+  })
+
+  it("should not be able to buy record they can't afford", function () {
+    customer2.buyRecord(record1)
+
+    assert.strictEqual(customer2.collection.length, 0)
+    assert.strictEqual(customer2.cash, 50)
+  })
 })
