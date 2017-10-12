@@ -22,12 +22,18 @@ RecordStore.prototype = {
       return record.title === titleToFind
     })
     if (foundIndex === -1) return null
-    
+
     var foundRecord = this.inventory.splice(foundIndex, 1)[0]
     this.balance += foundRecord.price
     return foundRecord
-  }
+  },
 
+  financialReport: function () {
+    var inventoryValue = this.inventory.reduce(function (total, record) {
+      return total + record.price
+    }, 0)
+    return "Balance: " + this.balance + ", Inventory value: " + inventoryValue
+  }
 }
 
 module.exports = RecordStore

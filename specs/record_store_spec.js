@@ -68,4 +68,14 @@ describe("Record Store", function () {
     assert.strictEqual(recordStore.balance, 0)
   })
 
+  it("should be able to print financial report", function () {
+    recordStore.addRecord(record1)
+    recordStore.addRecord(record2)
+    result = recordStore.sellRecord("In Rainbows")
+
+    expected = "Balance: 10, Inventory value: 100"
+
+    assert.strictEqual(recordStore.financialReport(), expected)
+  })
+
 })
