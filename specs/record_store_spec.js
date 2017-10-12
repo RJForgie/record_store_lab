@@ -57,4 +57,15 @@ describe("Record Store", function () {
     assert.strictEqual(recordStore.balance, 10)
   })
 
+  it("should not be able to sell record that doesn't exist", function () {
+    recordStore.addRecord(record1)
+    recordStore.addRecord(record2)
+
+    result = recordStore.sellRecord("Any Beegees album")
+
+    assert.strictEqual(result, null)
+    assert.strictEqual(recordStore.inventory.length, 2)
+    assert.strictEqual(recordStore.balance, 0)
+  })
+
 })

@@ -21,7 +21,9 @@ RecordStore.prototype = {
     var foundIndex = this.inventory.findIndex( function (record) {
       return record.title === titleToFind
     })
-    var foundRecord =  this.inventory.splice(foundIndex, 1)[0]
+    if (foundIndex === -1) return null
+    
+    var foundRecord = this.inventory.splice(foundIndex, 1)[0]
     this.balance += foundRecord.price
     return foundRecord
   }
