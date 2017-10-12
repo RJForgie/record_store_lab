@@ -23,4 +23,9 @@ describe("Record", function () {
   it("should have a price", function () {
     assert.strictEqual(record.price, 100)
   })
+
+  it("should be able to print properties", function () {
+    var expected = "Artist: Jimi Hendrix, Title: Axis Bold As Love, Genre: Classic, Price: 100"
+    assert.strictEqual(record.printInfo(), expected)
+  })
 })
