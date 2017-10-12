@@ -70,4 +70,11 @@ describe("Customer", function () {
 
     assert.strictEqual(customer1.valueByGenre("Classic"), 100)
   })
+
+  it("should be able to find most valuable record", function () {
+    customer1.buyRecord(record1)
+    customer1.buyRecord(record2)
+
+    assert.strictEqual(customer1.findMostValuable(), record1)
+  })
 })

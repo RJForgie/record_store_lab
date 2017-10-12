@@ -36,6 +36,15 @@ Customer.prototype = {
       }
       return total
     }, 0)
+  },
+
+  findMostValuable: function () {
+    return this.collection.reduce(function (max, record) {
+      if (record.price > max.price) {
+        return record
+      }
+      return max
+    })
   }
 }
 
