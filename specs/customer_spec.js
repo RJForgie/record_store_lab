@@ -63,4 +63,11 @@ describe("Customer", function () {
 
     assert.strictEqual(customer1.collectionValue(), 110)
   })
+
+  it("should be able to calculate value of records in genre", function () {
+    customer1.buyRecord(record1)
+    customer1.buyRecord(record2)
+
+    assert.strictEqual(customer1.valueByGenre("Classic"), 100)
+  })
 })

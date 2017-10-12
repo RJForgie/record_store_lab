@@ -27,6 +27,15 @@ Customer.prototype = {
     return this.collection.reduce(function (total, record) {
       return total + record.price
     }, 0)
+  },
+
+  valueByGenre: function (genreToFind) {
+    return this.collection.reduce(function (total, record) {
+      if (record.genre === genreToFind) {
+        return total + record.price
+      }
+      return total
+    }, 0)
   }
 }
 
