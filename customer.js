@@ -45,6 +45,14 @@ Customer.prototype = {
       }
       return max
     })
+  },
+
+  sortRecords: function () {
+    this.collection.sort(function (recordA, recordB) {
+      if (recordA.price > recordB.price) return -1
+      if (recordA.price == recordB.price) return 0
+      return 1
+    })
   }
 }
 

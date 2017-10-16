@@ -77,4 +77,14 @@ describe("Customer", function () {
 
     assert.strictEqual(customer1.findMostValuable(), record1)
   })
+
+  it("should be able to sort records by value (descending)", function () {
+    customer1.buyRecord(record2)
+    customer1.buyRecord(record1)
+
+    customer1.sortRecords()
+
+    expected = [record1, record2]
+    assert.deepStrictEqual(customer1.collection, expected)
+  })
 })
